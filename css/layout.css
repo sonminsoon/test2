@@ -1,0 +1,83 @@
+@charset "utf-8";
+
+#wrap{width:100%; min-width:1400px;}
+
+
+#top_event{overflow:hidden; position:relative; width:100%; height:170px; border-bottom:1px solid #e5e5e5;}
+#top_event .img{padding-left:50%; margin-left:-1010px;}
+#top_event .btn_close{position:absolute; top:16px; left:50%; margin-left:630px;}
+
+#header{position:relative;}
+#header_top{position:relative; width:1360px; margin:0 auto;}
+h1.logo{width:300px; margin:0px auto; text-align:center;}
+#util_menu{overflow:hidden; position:absolute; top:50px; left:0px;}
+#util_menu li{float:left; position:relative;}
+#util_menu li:after{position:absolute; top:5px; left:-1px; width:1px; height:10px; background:#b0b0b0; content:'';}
+#util_menu li a{display:block; padding:0px 13px; font-size:13px; color:#04022a; line-height:20px; text-decoration:none;}
+#util_menu li a:hover{color:#000000;}
+.top_tel{position:absolute; top:41px; right:0px;}
+
+
+/* gnb */
+
+
+#gnb{width:100%; border-top:1px solid #e5e5e5; border-bottom:1px solid #e5e5e5;}
+#gnb a{text-decoration:none;}
+#gnb .gnb_list{position:relative; width:1360px; height:80px; margin:0 auto;}
+#gnb .gnb_list > a{display:block; overflow:hidden; position:absolute; top:0px; width:80px; height:81px; text-indent:-999px;}
+#gnb .gnb_list > a.btn_home{left:0px; background:url('../images/icon/home.png') no-repeat center #04022a;}
+#gnb .gnb_list > a.btn_menu{right:0px; border-left:1px solid #e5e5e5; border-right:1px solid #e5e5e5; background:url('../images/icon/menu.png') no-repeat center;}
+#gnb .gnb_list > ul{position:absolute; top:0px; left:80px; right:80px; height:78px;}
+#gnb .gnb_list > ul > li{float:left; position:relative; width:14.2857%;}
+#gnb .gnb_list > ul > li > ul{display:none;}
+#gnb .gnb_list > ul > li a{display:block; border-left:1px solid #e5e5e5; font-size:17px; color:#212121; text-align:center; line-height:80px; font-weight:700;}
+#gnb .gnb_list > ul > li.active a, .gnb_list > ul > li a:hover{color:#765235;}
+
+
+
+#total_menu{display:none; position:absolute; top:250px; left:50%; z-index:1000; width:1260px; padding:50px 10px; margin-left:-630px; border:2px solid #444444; background:#ffffff;}
+#total_menu .btn_close{display:block; overflow:hidden; position:absolute; top:10px; right:10px; width:53px; height:53px; text-indent:-999px; background:url('../images/common/btn_close_allmenu.gif') no-repeat;}
+#total_menu a{text-decoration:none;}
+#total_menu > ul > li{float:left; width:14.2857%; height:300px; padding-left:20px; border-left:1px solid #e9e9e9;}
+#total_menu > ul > li:first-child{border-left:0px;}
+#total_menu > ul > li > a{font-size:17px; font-weight:700;}
+#total_menu > ul ul{padding-top:30px;}
+#total_menu > ul ul li{margin-bottom:10px;}
+#total_menu > ul ul a{display:block; position:relative; padding-left:12px; font-size:13px; color:#000000;}
+#total_menu > ul ul a:after{position:absolute; top:7px; left:0px; width:5px; height:1px; font-size:13px; color:#000000; background:#000000; content:'';}
+
+
+
+#r_banner{position:absolute; top:170px; right:0px; height:100%; z-index:100000; border-left:1px solid #d7d7d7; background:#ffffff;}
+#r_banner.event_close{top:0px;}
+#r_banner.fixed{position:fixed; top:0px; bottom:0px;}
+#r_banner li{position:relative;}
+#r_banner li img{position:relative; z-index:10;}
+#r_banner li img.on{position:absolute; top:0px; left:0px; z-index:11; opacity:0; -webkit-transition: opacity 0.4s ease; transition: opacity 0.4s ease;}
+#r_banner li a:hover img.on{opacity:1;}
+
+
+
+
+#footer{background:#3c3a3d;}
+#footer a{text-decoration:none;}
+#footer .footer01{border-bottom:1px solid #575558;}
+#footer .footer_cont{overflow:hidden; width:1280px; margin:0 auto; padding:25px 0px;}
+#footer_menu01{float:left; overflow:hidden; margin-top:13px;}
+#footer_menu01 li{float:left;}
+#footer_menu01 li a{display:block; padding:0px 10px; font-size:15px; color:#ffffff; line-height:25px;}
+#footer_menu01 li a:hover{color:#ffe001;}
+#footer_menu02{float:right; overflow:hidden;}
+#footer_menu02 li{float:left;}
+
+#footer .footer02{padding-left:10px;}
+#footer .footer02 *{font-size:14px;}
+#footer .footer02 .address{color:#c1bfc2;}
+#footer .footer02 .copyright{padding-top:8px; color:#f3f3f3;}
+
+
+/* etc */
+.after:after{display:block;clear:both;content:''}
+.sound_only, .hidden_title{overflow:hidden; position:absolute; top:-500px; left:0px; font-size:0px;}
+
+.cont_size01{width:1360px; margin:0 auto;}

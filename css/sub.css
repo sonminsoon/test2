@@ -1,0 +1,71 @@
+@charset "utf-8";
+
+#sub_top{overflow:hidden; position:relative; width:100%; height:201px; border-bottom:1px solid #bebebe; text-align:center;}
+#sub_top a{text-decoration:none;}
+#sub_top .img{position:absolute; top:0px; left:50%; z-index:10; margin-left:-1010px;}
+#sub_top ul{display:inline-block; overflow:hidden; position:relative; z-index:100; margin-top:145px; border:1px solid #bebebe;}
+#sub_top li{float:left; width:170px; height:54px; margin-left:-1px; border-left:1px solid #bebebe;}
+#sub_top li a{display:block; height:54px; font-size:15px; color:#303030; font-weight:700; text-align:center; line-height:53px; background:#ffffff;}
+#sub_top li.active a, #sub_top li a:hover{height:54px; color:#ffffff; background:#ba8551;}
+
+
+#container{overflow:hidden; width:100%;}
+#container .sub_contents{width:1280px; margin:0 auto;}
+
+.board_container{padding:100px 0px;}
+
+.img_center{padding-left:50%;}
+.img_center .img{display:block; margin-left:-1010px;}
+
+.img_wrap01{padding-left:50%;}
+.img_wrap01 > div{width:2020px; margin-left:-1010px; text-align:center;}
+.img_wrap01 > div img{display:block; margin:0 auto;}
+
+
+#lnb{position:absolute; top:495px; left:50%; z-index:1000; margin-left:-786px; width:146px;}
+#lnb a{text-decoration:none;}
+#lnb h2{font-size:16px; color:#ddc2a8; line-height:50px; text-align:center; background:#ba8551;}
+#lnb li{border-bottom:1px solid #545255;}
+#lnb li a{display:block; padding:10px 15px 10px 20px; font-size:15px; color:#bab8bb; line-height:20px; text-align:right; background:#3c3a3d; background-position:-10px 15px;}
+#lnb li.active a, #lnb li a:hover{color:#ffffff; background:url('../images/icon/lnb_arrow.png') no-repeat 14px 15px #2a292b;}
+#lnb li.active a{font-weight:700;}
+
+
+
+.cont_roll_type01{position:relative; width:1280px; height:410px; margin:66px auto;}
+.cont_roll_type01 a{text-decoration:none;}
+.cont_roll_type01 .slider_wrap{position:absolute; top:0px; right:0px; width:960px; height:410px;}
+.cont_roll_type01 .bx-pager{position:absolute; top:0px; left:-320px; width:320px; border:1px solid #dbdbdb;}
+.cont_roll_type01 .bx-pager .bx-pager-item{overflow:hidden; width:100%; height:58px; margin-top:-1px; border-top:1px solid #dbdbdb;}
+.cont_roll_type01 .bx-pager .bx-pager-item a{display:block; width:auto; height:60px; margin:0px; border:0px; text-indent:0; font-size:20px; text-align:center; color:#333333; font-weight:500; line-height:60px; -webkit-border-radius:0; -moz-border-radius:0; border-radius:0; -khtml-border-radius: 0;}
+.cont_roll_type01 .bx-pager .bx-pager-item a:hover{background:#ffffff;}
+.cont_roll_type01 .bx-pager .bx-pager-item a.active{color:#ffffff !important; font-weight:700; background:#414141 !important;}
+.cont_roll_type01 .bx-pager .bx-pager-item .ico{display:inline-block; width:9px; height:10px; margin-left:13px; vertical-align:middle; background:url('../images/icon/ico_arrow01.png');}
+
+
+#sub_bottom_cont{position:relative; padding-left:50%; background:#f1f1f1;}
+#sub_bottom_cont > div{width:2020px; margin-left:-1010px;}
+#sub_bottom_cont > div > div{width:1280px; margin:0 auto;}
+#sub_bottom_cont .cont_wrap{overflow:hidden;}
+#sub_bottom_cont .item{float:left;}
+
+#bottom_counsel{overflow:hidden; width:852px; height:280px; background:#59213c;}
+#bottom_counsel a{text-decoration:none;}
+#bottom_counsel .counsel_img{float:left; margin-right:40px;}
+#bottom_counsel table{float:left; width:320px; margin-top:40px;}
+#bottom_counsel th{font-size:16px; color:#ffffff; line-height:37px; text-align:left;}
+#bottom_counsel td{padding-bottom:3px;}
+#bottom_counsel input[type="text"]{height:37px; padding:0px 10px; font-size:15px; line-height:35px;}
+#bottom_counsel select{height:37px; padding:3px;}
+#bottom_counsel textarea{width:100%; height:78px;}
+#bottom_counsel .cont01{float:left; margin-top:40px; margin-left:3px;}
+#bottom_counsel .agree_text{height:120px; padding-top:50px; padding-left:15px; font-size:12px; color:#caaebc; line-height:15px;}
+#bottom_counsel .agree_link{display:block; padding-bottom:5px; font-size:12px; color:#caaebc; line-height:15px; line-height:1.4;}
+#bottom_counsel .agree_text label{font-size:12px; color:#ffffff;}
+
+.row{overflow:hidden;}
+.row select,.row input{float:left; margin-left:3px;}
+.row select:first-child,.row input:first-child{margin-left:0px;}
+
+.w01{width:246px;}
+.w02{width:80px;}
