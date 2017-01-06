@@ -26,6 +26,7 @@ $facebook = new Facebook(array(
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script src='/js/total.js'></script>
 
+<? include "../member/include/m_head.php" ?>
 <div class="m_body_wrap">
 	<div class="m_body">
 		<div class="m_location"><img src="/member/images/ico_home.gif" class="middle gimg">&nbsp;<img src="/member/images/ico_gubun.gif" class="middle gimg">&nbsp;멤버쉽<img src="/member/images/ico_gubun.gif" class="middle gimg">&nbsp;회원로그인</div>

@@ -26,7 +26,7 @@ header > a.btn_tel{width:49px; right:15px; background:url('../images/common/btn_
 #gnb > ul > li.active > a{color:#ba8551; background:#ffffff;}
 #gnb > ul > li.active > a:before{background-position:0px -83px;}
 #gnb > ul > li.active > a:after{background-position:-236px -74px;}
-#gnb .sub{display:none; width:280px; padding:10px; background:#d1d1d1;}
+#gnb .sub{display:none; width:300px; padding:10px; background:#d1d1d1;}
 #gnb .sub ul{border:1px solid #a1a1a1;}
 #gnb .sub ul li{height:42px; margin-top:-1px; border-top:1px solid #a1a1a1; background:url('../images/common/menu_bg01.jpg') repeat-x;}
 #gnb .sub a{display:block; padding-left:35px; font-size:19px; color:#333333; line-height:42px; font-weight:bold;}
@@ -49,7 +49,7 @@ header > a.btn_tel{width:49px; right:15px; background:url('../images/common/btn_
 #bottom_qlink ul li img{display:block;}
 
 footer{background:#f7f7f7;}
-.footer_cont{text-align:center;}
+.footer_cont{width:600px; margin:0 auto; text-align:center;}
 .footer_cont address{display:inline-block; padding:10px 0px 30px; font-style:normal; font-size:16px; color:#666666; line-height:25px; text-align:left;}
 
 

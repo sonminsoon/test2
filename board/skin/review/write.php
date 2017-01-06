@@ -118,7 +118,7 @@
 				<th>작성자 (*)</th>
 				<td><input name="strName" type="text" id="strName" class="textForm" style="width:40%;" value="<?= $Data["name"]?>" itemname="작성자" required></td>
 			</tr>
-		<?	if( $_SESS["ss_level"] > 2 ){	?>
+		<?	if( !$_SESSION["ss_id"] ){	?>
 			<tr>
 				<th>비밀번호 (*)</th>
 				<td><input name="strPass" type="password" id="strPass" class="textForm" style="width:20%;" itemname="비밀번호" required></td>
@@ -259,7 +259,11 @@ function submitContents(elClickedObj) {
 	// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("ir1").value를 이용해서 처리하면 됩니다.
 	document.getElementById("strComment").value = document.getElementById("ir1").value;
 	try {
-		fnConfirm(elClickedObj)
+		var breaker = fnConfirm(elClickedObj)
+		if (breaker == false)
+		{
+			return false;
+		}
 	} catch(e) {}
 }
 

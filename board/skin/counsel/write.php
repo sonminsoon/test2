@@ -99,7 +99,7 @@
 		<?	if( count( $List["categoryarr"] ) > 0 ){	?>
 			<tr>
 				<th>진료과목</th>
-				<td><?=getSelectCategory(array("name"=>"intField", "value"=>$Data["field"], "list"=>$List["categoryarr"], "itemname"=>"분류"));?></td>
+				<td><?=getSelectCategory(array("name"=>"intField", "value"=>preg_replace("/[^0-9]*/s", "", $Data["field"]), "list"=>$List["categoryarr"], "itemname"=>"분류"));?></td>
 			</tr>
 		<?	}	?>
 			<tr>
@@ -137,9 +137,9 @@
 				 <?}?>
 				</select>
 			 -
-			 <input name="strMobile2" type="text" id="strMobile2" style="width:80px;" maxlength="4" class="textForm" value="<?=$Data["mobile"][1]?>" <?=( $_SESSION["ss_level"] > 2 ) ? "itemname='휴대폰' required" : "" ?>>
+			 <input name="strMobile2" type="text" id="strMobile2" style="width:80px;" maxlength="4" class="textForm" value="<?=$Data["mobile"][1]?>" required>
 			 - 
-			 <input name="strMobile3" type="text" id="strMobile3" style="width:80px;" maxlength="4" class="textForm" value="<?=$Data["mobile"][2]?>" <?=( $_SESSION["ss_level"] > 2 ) ? "itemname='휴대폰' required" : "" ?>></td>
+			 <input name="strMobile3" type="text" id="strMobile3" style="width:80px;" maxlength="4" class="textForm" value="<?=$Data["mobile"][2]?>" required></td>
 			</tr>
 	<?if($boardSet["homepage"] == 'Y'){?>
 			<tr>
@@ -269,7 +269,7 @@ nhn.husky.EZCreator.createInIFrame({
 	},
 	fCreator: "createSEditor2"
 });
-
+<?if($_SESSION["ss_level"] <= 2 && $act=="modify"){ ?>
 nhn.husky.EZCreator.createInIFrame({
 	oAppRef: oEditors,
 	elPlaceHolder: "ir2",
@@ -289,7 +289,7 @@ nhn.husky.EZCreator.createInIFrame({
 	},
 	fCreator: "createSEditor2"
 });
-
+<? } ?>
 function pasteHTML() {
 	var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
 	oEditors.getById["ir1"].exec("PASTE_HTML", [sHTML]);
@@ -313,7 +313,11 @@ function submitContents(elClickedObj) {
 	document.getElementById("strReply").value = document.getElementById("ir2").value;
 	<? } ?>
 	try {
-		fnConfirm(elClickedObj)
+		var breaker = fnConfirm(elClickedObj)
+		if (breaker == false)
+		{
+			return false;
+		}
 	} catch(e) {}
 }
 

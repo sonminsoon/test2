@@ -25,7 +25,6 @@ $(function () {
 	$.fn.rBannerInit = function() {
 		
 		var $this = this;	
-		var interval;
 	
 		function config(){
 
@@ -51,6 +50,32 @@ $(function () {
 		config();
 
     };
+
+
+
+	// ÅÇÄÁÅÙÃ÷
+	$.fn.tabContInit = function() {
+		
+		var $this = this;	
+	
+		function config(){
+			$this.find(".tab_menu a").click(tabClick);
+		}
+		function tabClick(){
+			var idx = $(this).parent().index();
+			$this.find(".tab_menu li").removeClass("active");
+			$(this).parent().addClass("active");
+			$this.find(".cont > li").css("display","none");
+			$this.find(".cont > li").eq(idx).css("display","block");
+
+
+		}
+		
+
+		config();
+
+    };
+
 
 
 

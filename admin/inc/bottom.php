@@ -1,3 +1,3 @@
 <div id="bottomArea">
-		Copyright (C) rubyps.co.kr. All Rights Reserved.
-	</div>
+	Copyright (C) <?=$_SERVER['HTTP_HOST'];?>. All Rights Reserved.
+</div>

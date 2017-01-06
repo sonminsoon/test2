@@ -17,6 +17,36 @@
 		$arrPopup[$nPopCnt]['top']		= $aPopQuery['tblIntTop'];
 		$nPopCnt++;
 	}
+
+    $tb		= array("notice", "online_counsel","replyboard");  // 소식지/이벤트, 온라인 상담, 생생후기
+	$getsu	= array("6","6","6");
+	$kr		= array("/intro/intro03.php?","/counsel/counsel01.php?","/counsel/counsel02.php?");
+	$suzza	= array("45","38","38");
+	$imgtype= array("","");  // 이미지 표시시 해당 업로드 파일의 이름이 저장된 테이블을 적음.
+	$where	= array("","");
+	$gubun	= array("","");
+
+  for($i=0;$i<count($tb);$i++){
+	$sql		= "SELECT * FROM tbl_".$tb[$i]." WHERE tblStrThread='A' ".$where[$i]." ORDER BY tblDtmRegDate DESC LIMIT 0,".$getsu[$i];
+	$stmt		= mysql_query( $sql);
+	${"cnt_".$i}= 0;
+	while($rs = mysql_fetch_array($stmt)){
+		${"Data_".$i}[${"cnt_".$i}]["tb"]	= $tb[$i];
+		${"Data_".$i}[${"cnt_".$i}]["number"]	= $rs["tblNumber"];
+		${"Data_".$i}[${"cnt_".$i}]["name"]		= $rs["tblStrName"];
+		${"Data_".$i}[${"cnt_".$i}]["field"]	= $rs["tblIntField"];
+		${"Data_".$i}[${"cnt_".$i}]["newdate"]	= date( 'Y-m-d 00:00:00', time() - ( 86400*3 ) ); /*  */
+		${"Data_".$i}[${"cnt_".$i}]["newimg"]	= (${"Data_".$i}[${"cnt_".$i}]["regdate"] >= ${"Data_".$i}[${"cnt_".$i}]["newdate"] ) ? "&nbsp;<img src='/board/skin/counsel/images/icon_new.gif' align='absmiddle'>" : "";
+		${"Data_".$i}[${"cnt_".$i}]["subject"]	= mb_strimwidth( stripslashes( $rs["tblStrSubject"] ), 0, ceil($suzza[$i]), "..", "utf-8" );
+		${"Data_".$i}[${"cnt_".$i}]["comment"]	= mb_strimwidth( stripslashes( strip_tags($rs["tblStrComment"],"<br>") ), 0, ceil(120), "..", "utf-8" );  // 본문내용에서 html 코드만 제거 ceil(60) -> ceil(글자수) 
+		${"Data_".$i}[${"cnt_".$i}]["regdate"]	= substr( $rs["tblDtmRegDate"], 0, 10 );
+		${"Data_".$i}[${"cnt_".$i}]["savefile"]	= explode("|",$rs[$imgtype[$i]]);
+		${"Data_".$i}[${"cnt_".$i}]["viewlink"]	= $kr[$i]."&tb=".$tb[$i]."&act=view&tNum=".${"Data_".$i}[${"cnt_".$i}]["number"];
+		${"Data_".$i}[${"cnt_".$i}]["answer"]  = (trim($rs["tblStrReply"])!='') ? '<th class="end">답변완료</th>' : '<th class="ing">답변대기</th>';
+		${"Data_".$i}[${"cnt_".$i}]["answercolor"]  = (trim($rs["tblStrReply"])!='') ? "end" : "ing";
+		${"cnt_".$i}=${"cnt_".$i}+1;
+	}
+  }	
 ?>
 <script type="text/javascript">
 function hide_popup(p_sID){

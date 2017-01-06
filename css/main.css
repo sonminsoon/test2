@@ -35,9 +35,9 @@
 #main_board > div{float:left; width:413px; margin:0px 10px;}
 #main_board .board{position:relative;}
 #main_board .board h2{height:45px; padding-left:2px; font-size:25px; color:#252525; font-weight:700; line-height:30px;}
-#main_board .board .btn{overflow:hidden; position:absolute; top:0px; right:6px; width:12017-01-026px; height:16px; text-indent:-999px;}
-#main_board .board .btn.btn_prev{background:url('../images/main/btn_board_prev.jpg');}
-#main_board .board .btn.btn_next{top:19px; background:url('../images/main/btn_board_next.jpg');}
+#main_board .board .btn{overflow:hidden; position:absolute; top:0px; right:6px; width:17px; height:16px; text-indent:-999px;}
+#main_board .board .btn.btn_prev{background:url('../images/main/btn_board_prev.jpg') no-repeat;}
+#main_board .board .btn.btn_next{top:19px; background:url('../images/main/btn_board_next.jpg') no-repeat;}
 #main_board .board ul{margin:30px 5px 0px;}
 #main_board .board li{display:none;}
 #main_board .board a{display:inline-block; width:310px; font-size:15px; color:#535353; line-height:28px; text-decoration:none;}

@@ -1,5 +1,63 @@
 
 		<?if($mn!=0){?>
+
+		<div class="cont_roll_type01">
+			<div class="slider_wrap">
+				<ul>
+					<li><a href=""><img src="../images/cont/skin/skin02_cont0401.jpg" alt=""></a></li>
+					<li><a href=""><img src="../images/cont/skin/skin02_cont0401.jpg" alt=""></a></li>
+					<li><a href=""><img src="../images/cont/skin/skin02_cont0401.jpg" alt=""></a></li>
+					<li><a href=""><img src="../images/cont/skin/skin02_cont0401.jpg" alt=""></a></li>
+				</ul>			
+			</div>
+		</div>
+
+		<script>
+		$(function () {
+			var cont_roll_type01 = $('.cont_roll_type01 .slider_wrap ul').bxSlider({		
+				auto : false,
+			});
+
+			$(document).on('click','.cont_roll_type01',function() {
+				cont_roll_type01.stopAuto();
+				cont_roll_type01.startAuto();
+			});
+
+
+			var intervalCount = 0;
+			var interval = setInterval(bannerInputText,100);
+			bannerInputText();
+			function bannerInputText(){
+				
+				var t = $(".bx-pager-item").eq(0).text();
+
+				intervalCount++
+				if(intervalCount>30){
+					clearInterval(intervalCount);
+				}
+				
+				if(t==""){
+					return;
+				}
+				if(!(t==1 || t=="1")){
+					return;
+				}
+				
+				clearInterval(intervalCount);
+				$(".bx-pager-link").text("");
+				$(".bx-pager-link").eq(0).append("차별화된<br>진료시스템<span class='ico'></span>");
+				$(".bx-pager-link").eq(1).append("연구하는 이젠<span class='ico'></span>");
+				$(".bx-pager-link").eq(2).append("세계속의 이젠<span class='ico'></span>");
+				$(".bx-pager-link").eq(3).append("첨단 이젠<span class='ico'></span>");
+				
+			}
+
+
+
+		});
+		</script>
+
+
 		<!-- bottom_counsel -->
 		<div id="bottom_counsel">
 			<img src="../images/common/counsel_img.jpg" class="counsel_img item" alt="빠른상담">
@@ -68,7 +126,7 @@
 				<li><a href="#link"><img src="../images/common/qlink03.jpg" alt="온라인예약"></a></li>
 				<li><a href="#link"><img src="../images/common/qlink04.jpg" alt="수술후기"></a></li>
 				<li><a href="#link"><img src="../images/common/qlink05.jpg" alt="오시는길"></a></li>
-				<li><img src="../images/common/qlink06.jpg" alt="상담센터"></li>
+				<li><a href="tel:0415617978"><img src="../images/common/qlink06.jpg" alt="상담센터"></a></li>
 			</ul>
 		</div>
 

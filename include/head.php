@@ -42,6 +42,11 @@ include $_SERVER['DOCUMENT_ROOT']."/include/conn_save.php";
 
 <body>
 <!-- wrap -->
+<form name="formout" action="/member/memgaip.php" method="post" target="toplog_act">
+	<input type="hidden" name="url" value="<?=$_SERVER["REQUEST_URI"]?>">
+	<input type="hidden" name="mode" value="out">
+</form>
+<iframe name="toplog_act" frameborder="0" width="0" height="0" style="display:none;"></iframe>
 <div id="wrap">
 	<?if($mn<=0){?>
 	<div id="top_event">
@@ -56,9 +61,14 @@ include $_SERVER['DOCUMENT_ROOT']."/include/conn_save.php";
 		<div id="header_top">
 			<!-- util_menu -->
 			<ul id="util_menu">
-				<li><a href="">로그인</a></li>
-				<li><a href="">회원가입</a></li>
-				<li><a href="">오시는길</a></li>
+				<? if ($_SESSION['ss_name']) { ?>
+				<li><a href="javascript:;" onclick="javascript:document.formout.submit();">로그아웃</a></li>
+				<li><a href="/member/modify.php" target="_self">정보수정</a></li>
+				<? } else { ?>
+				<li><a href="/member/login.php" target="_self">로그인</a></li>
+				<li><a href="/member/join01.php" target="_self">회원가입</a></li>
+				<? } ?>
+				<li><a href="/intro/intro06.php">오시는길</a></li>
 			</ul>				
 			<!-- //util_menu -->
 
@@ -160,11 +170,9 @@ include $_SERVER['DOCUMENT_ROOT']."/include/conn_save.php";
 	<div id="r_banner">
 		<h2><img src="../images/common/title_rquick.jpg" alt="QUICK MENU"></h2>
 		<ul>
-			<li><a href="" target="_self"><img src="../images/common/rquick01.jpg" alt="카톡상담"/></a></li>
-			<li><a href="" target="_self"><img src="../images/common/rquick02.jpg" alt="온라인상담"/></a></li>
-			<li><a href="" target="_self"><img src="../images/common/rquick03.jpg" alt="온라인예약"/></a></li>
-			<li><a href="" target="_self"><img src="../images/common/rquick04.jpg" alt="수술후기"/></a></li>
-			<li><a href="" target="_self"><img src="../images/common/rquick05.jpg" alt="오시는길"/></a></li>
+			<li><a href="/counsel/counsel01.php"><img src="../images/common/rquick02.jpg" alt="온라인상담"/></a></li>
+			<li><a href="/counsel/counsel02.php"><img src="../images/common/rquick04.jpg" alt="수술후기"/></a></li>
+			<li><a href="/intro/intro06.php"><img src="../images/common/rquick05.jpg" alt="오시는길"/></a></li>
 			<li><img src="../images/common/rquick06.jpg" alt=""/></li>
 		</ul>
 	</div>

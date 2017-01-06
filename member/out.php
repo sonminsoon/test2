@@ -1,4 +1,4 @@
-<? include "../include/head.php" ?>
+<? include "../member/include/m_top.php" ?>
 <? if(!$_SESSION["ss_id"]) { echo "<script>location.href='/member/login.php?ref=".urlencode($_SERVER['REQUEST_URI'])."';</script>"; } ?>
 <? 
 $tabNum = 5;
@@ -6,8 +6,9 @@ $tabNum = 5;
 <script src="/js/total.js"></script>
 <link rel='stylesheet' href='../css/style.css' media='all' />
 <link rel='stylesheet' href='../member/css/style.css' media='all' />
-<body>
-<? include "../member/include/m_top.php" ?>
+
+<? include "../member/include/m_head.php" ?>
+
 <div class="m_body_wrap">
 	<div class="m_body">
 		<div class="m_location"><img src="/member/images/ico_home.gif" class="middle gimg">&nbsp;<img src="/member/images/ico_gubun.gif" class="middle gimg">&nbsp;멤버쉽<img src="/member/images/ico_gubun.gif" class="middle gimg">&nbsp;회원탈퇴</div>

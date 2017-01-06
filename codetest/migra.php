@@ -2,9 +2,10 @@
 ini_set('max_execution_time', 3000);
 header("Content-Type:text/html; charset=utf-8");
 include $_SERVER['DOCUMENT_ROOT']."/include/dbconfig.php";
-/*
-그누보드에서 온라인 상담만 데이터 이전
-*/
+exit;
+// http://ezen.openhaja.com/codetest/migra.php?sub_no=1
+// http://ezen.openhaja.com/codetest/migra.php?sub_no=4
+
 //대괄호배열
 function getArrayString($str)
 {
@@ -19,14 +20,27 @@ function getArrayString($str)
 	$arr1['count'] = count($arr1['data']);
 	return $arr1;
 }
+if ($sub_no == 1) {
+	$tb = "notice";
+} else if ($sub_no == 2) {
+	$tb = "online_counsel";
+}
 
-$tb = "online_counsel";
 
 // 게시판 초기화
 mysql_query("delete from tbl_".$tb);
 mysql_query("ALTER TABLE tbl_".$tb." AUTO_INCREMENT=1");
 
-	$sql = "select * from g5_write_online_consult where wr_reply != 'A' order by wr_id asc";
+
+	if ($sub_no == 1) {
+		// 1,4 공지사항과 이벤트
+		//$sql = "SELECT * FROM admin_board_01 where Sub_No IN ('1', '4') and Fname!='' order by No asc";
+		$sql = "SELECT * FROM admin_board_01 where Sub_No IN ('1', '4') order by No asc";
+	} else if ($sub_no == 2) {
+		// 온라인 상담
+		$sql = "SELECT * FROM admin_board_01 where Sub_No=2 and No=No1 order by No asc";
+	}
+
 	$result = mysql_query( $sql );
 	while( $row = mysql_fetch_array( $result ) ) {
 
@@ -38,31 +52,39 @@ mysql_query("ALTER TABLE tbl_".$tb." AUTO_INCREMENT=1");
 			$Data["fid"]			= ( $rows[0] ) ? $rows[0] + 1 : 1;		
 			$Data["thread"]			= "A";			
 			$Data["field"]			= '';
-			$Data["ss_id"]			= $row['mb_id'];
-			$Data["passwd"]			= $row["wr_password"];
-			$Data["name"]			= $row["wr_name"];
-			$Data["subject"]		= addslashes($row["wr_subject"]);
+
+			$Data["ss_id"]=($sub_no == 1)?'admin':'';
+			
+			$Data["passwd"]			= $row["Pass"];
+			$Data["name"]=($sub_no == 1)?'이젠의원':$row["Name"];
+			$Data["subject"]		= addslashes($row["Title"]);
 			$Data["phone"]			= '';
 			$Data["mobile"]			= '';
-			$Data["content"]		= addslashes( $row["wr_content"] );
+			$Data["content"]		= addslashes( $row["Cont"] );
 			$Data["blnsms"]			= 'N';
-			$Data["email"]			= $row["wr_email"];
+			$Data["email"]			= $row["Email"];
 			$Data["blnemail"]		= 'N';
-			$Data["notice"]			= $row["notice"];
-			$Data["secret"]='Y';
-
-			if ( !$row["show_row"] || $row["show_row"] == '1' ) {
-				$Data["show"]		= 'Y';
-			} else if ( $row["show_row"] == '0' ) {
-				$Data["show"]		= "N";
-			}
+			$Data["notice"]			= ($row["B_Title"]==1)?'1':'0';
+			$Data["secret"]			= ($row["P_up"]==1)?'Y':'N';
+			$Data["show"]		= 'Y';
 			$Data["intgp"]			= $_POST["intGP"];
-			$Data["ip"]				= $row["wr_ip"];
-			$Data["etc"]			= $_POST["etc"];		
-			$Data["ref"]			= $row["wr_hit"];		// 히트수
-			$Data["regdate"]		=	$row["wr_datetime"];
-			$Data["moddate"]		=	$row["wr_last"];
+			$Data["ip"]				= $row["Ip"];
+			$Data["etc"]			= '';	
+			$Data["ref"]			= $row["Cnt"];		// 히트수
+			$Data["regdate"]		=	$row["Wdate"];
+			$Data["moddate"]		=	'';
 			
+			unset($saveFile);
+			unset($liefile);
+			if ($row["Fname"]) {
+				echo 'Fname=  '.$row["No"].'--'.$row["Fname"];
+				$org_img = '/_data/temp/'.$row['Fname'];
+				$new_img = '/_data/'.$tb.'/'.$row['Fname'];
+				copy($_SERVER['DOCUMENT_ROOT'].$org_img, $_SERVER['DOCUMENT_ROOT'].$new_img);
+				//$saveFile = $new_img.'|';
+				//$liefile = $row['Fname'].'|';
+			}
+
 			$iQue = "INSERT INTO tbl_".$tb." SET ";
 			$iQue .= " tblIntFid='".$Data["fid"]."',";
 			$iQue .= " tblStrThread='".$Data["thread"]."',";
@@ -81,7 +103,7 @@ mysql_query("ALTER TABLE tbl_".$tb." AUTO_INCREMENT=1");
 			$iQue .= " tblStrSecret='".$Data["secret"]."',";
 			$iQue .= " tblStrComment='".$Data["content"]."',";
 			$iQue .= " tblStrSaveFile='".$saveFile."',";
-			$iQue .= " tblStrLieFile='".$Data["liefile"]."',";
+			$iQue .= " tblStrLieFile='".$liefile."',";
 			$iQue .= " tblStrThum1='".$Data["thumfile1"]."',";
 			$iQue .= " tblStrThum2='".$Data["thumfile2"]."',";
 			$iQue .= " tblStrThum3='".$Data["thumfile3"]."',";
@@ -90,19 +112,14 @@ mysql_query("ALTER TABLE tbl_".$tb." AUTO_INCREMENT=1");
 			$iQue .= " tblIntRef='".$Data["ref"]."',";			// 히트수
 			$iQue .= " tblStrShow='".$Data["show"]."',";
 			$iQue .= " tblStrIp='".$Data["ip"]."',";
-				
-			if ($tb == 'online_counsel') {
-				$iQue .= " tblIntGP='".$row["network"]."',";
-			} else {
-				$iQue .= " tblIntGP='".$Data["intgp"]."',";
-			}
-			$iQue .= " tblStrEtc='".abs($row["wr_num"])."',";
+			$iQue .= " tblIntGP='".$Data["intgp"]."',";
+			$iQue .= " tblStrEtc='".abs($row["No"])."',";
 			$iQue .= " tblDtmRegDate='".$Data["regdate"]."'";
 			
 
 			$iSql = mysql_query($iQue) or die(mysql_error());
 	}
 
-	mysql_query("UPDATE tbl_".$tb." SET tblStrComment = REPLACE(tblStrComment,'http://hooclinic.co.kr/','/')");
+	mysql_query("UPDATE tbl_".$tb." SET tblStrComment = REPLACE(tblStrComment,'http://ezenskin.co.kr/admin/admin_board_01/data/','/_data/notice/')");
 ?>
 <?=$tb;?> OK!!

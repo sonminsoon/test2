@@ -52,7 +52,7 @@
 .m_contents .htext strong { color:#e8724d;}
 .m_contents h3 { display:block; font-size:22px; color:#111111; height:70px; line-height:70px; padding-left:31px; position:relative; background:url(../images/stt_bl.png) 2px 26px no-repeat;}
 .m_contents h3 span.st { position:absolute; right:0; top:0; font-size:17px; color:#ed1c24; text-align:right;}
-.m_contents .agree_box { border:1px solid #dddddd; background:#fff; padding:20px; width:1158px; height:108px;}
+.m_contents .agree_box { border:1px solid #dddddd; background:#fff; width:1158px; height:108px;}
 .m_contents .agree_box iframe { width:1158px; height:108px;}
 .m_contents .agree_form { padding-top:10px; text-align:right; padding-bottom:25px; font-size:15px; font-weight:500;}
 .m_contents .btn_area { padding-top:25px; padding-bottom:40px; text-align:center;}

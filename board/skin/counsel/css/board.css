@@ -3,8 +3,8 @@
 
 #boardSkin { width:100%;}
 #boardSkin input { vertical-align:middle;}
-#boardSkin select { background:#ffffff; border:1px solid #e0e0e0; vertical-align:middle; }
-#boardSkin .textForm { background:#ffffff; border:1px solid #e0e0e0; padding:3px;}
+#boardSkin select { background:#ffffff; border:1px solid #e0e0e0; vertical-align:middle; padding:2px;}
+#boardSkin .textForm { background:#ffffff; border:1px solid #e0e0e0; padding:2px;}
 #boardSkin textarea { background:#ffffff; border:1px solid #e0e0e0;  resize:none;}
 #boardSkin .middleCon { vertical-align:middle;}
 #boardSkin a { color:#333333; }

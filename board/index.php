@@ -362,7 +362,7 @@ define("root" ,$_SERVER['DOCUMENT_ROOT']);
 			$iQue .= " tblStrThread='".$Data["thread"]."',";
 			$iQue .= " tblIntField='".$Data["field"]."',";
 			$iQue .= " tblStrID='".$_SESS["ss_id"]."',";
-			$iQue .= " tblStrPass=password('".$Data["passwd"]."'),";
+			$iQue .= " tblStrPass='".$Data["passwd"]."',";
 			$iQue .= " tblStrName='".$Data["name"]."',";
 			$iQue .= " tblStrSubject='".$Data["subject"]."',";
 			$iQue .= " tblStrPhone='".$Data["phone"]."',";
@@ -476,15 +476,6 @@ define("root" ,$_SERVER['DOCUMENT_ROOT']);
 		$Data["age"]			= $Array["tblAge"];
 		$Data["sex"]			= $Array["tblSex"];
 
-		$Data["entSubject"]			= $Array["entSubject"];
-		$Data["entStart"]			= $Array["entStart"];
-		$Data["entEnd"]			= $Array["entEnd"];
-
-		$Data["vodSubject"]			= $Array["vodSubject"];
-		$Data["vodCeo"]			= $Array["vodCeo"];
-		$Data["vodDate"]			= $Array["vodDate"];
-		$Data["vodPart"]			= $Array["vodPart"];
-
 		$Data["period"]			= $Array["tblPeriod"];
 		$Data["comment2"]		= stripslashes( $Array["tblStrComment2"] );
 
@@ -533,14 +524,23 @@ define("root" ,$_SERVER['DOCUMENT_ROOT']);
 		/* 자동글등록방지 체크 끝   */
 		
 		/* 기존 파일들 삭제하고 다시 올리기 시작 */
-		$Que = "SELECT * FROM tbl_".$tb." WHERE tblNumber='$tNum' and tblStrPass=password('".$strPass."')";
+		if( $_SESSION["ss_id"] && $_SESS["ss_level"] > 2) $whereis = " and tblStrID ='".$_SESSION["ss_id"]."'";
+
+		$Que = "SELECT * FROM tbl_".$tb." WHERE tblNumber='$tNum'".$whereis;
 		$Sql = mysql_query( $Que );
 		$Result = mysql_fetch_array( $Sql );
-
-		if( $_SESS["ss_level"] > 2 && !$Result["tblNumber"]) {
-			echo "<script langauge='javascript'>alert('비밀번호가 잘못되었습니다.'); history.go(-1);</script>";
+		
+		if( !$_SESSION["ss_id"] ){
+			if( $Result["tblStrPass"] != $strPass) {
+				echo "<script langauge='javascript'>alert('비밀번호가 잘못되었습니다.'); history.go(-1);</script>";
+				exit;
+			}
+		}
+		if (!$Result["tblNumber"]) {
+			echo "<script langauge='javascript'>alert('정상적으로 접근하여 주세요.'); history.go(-1);</script>";
 			exit;
 		}
+
 
 		$Modify["savefile"] = explode('|',$Result["tblStrSaveFile"]);
 		$Modify["liefile"] = explode('|',$Result["tblStrLieFile"]);
@@ -647,11 +647,8 @@ define("root" ,$_SERVER['DOCUMENT_ROOT']);
 
 		$mData["start_date"]	= $_POST["start_date"];
 		$mData["end_date"]		= $_POST["end_date"];
-		if ($tb == 'online_counsel') {
-			$Data["etc"]			= $_POST["cate1"].'|'.$_POST["cate2"].'|'.$_POST["cate3"];		
-		} else {
-			$Data["etc"]			= $_POST["etc"];		
-		}
+		$Data["etc"]			= $_POST["etc"];		
+
 
 		$mQue = "UPDATE tbl_".$tb." SET ";
 		$mQue .= "tblIntField='".$mData["field"]."',";
@@ -684,18 +681,11 @@ define("root" ,$_SERVER['DOCUMENT_ROOT']);
 		$mQue .= "tblStrEtc='".$mData["etc"]."',";
 		$mQue .= "tblIntRef='".$mData["ref"]."',";
 		$mQue .= "tblStrEtc='".$Data["etc"]."',";
-		if($tb == 'event'){
-			$mQue .= " entSubject='".$_POST["entSubject"]."',";
-			$mQue .= " entStart='".$_POST["entStart"]."',";
-			$mQue .= " entEnd='".$_POST["entEnd"]."',";
-		}
-
 		if( $mData["regdate"] ) {
 			$mQue .= "tblDtmRegDate='".$mData["regdate"]."',";
 		}
-		$mQue .= "tblDtmModDate=now() WHERE tblNumber='".$tNum."' AND tblIntFid='".$Result["tblIntFid"]."'";
-//		echo "$mQue"; die();
-
+		$mQue .= "tblDtmModDate=now() WHERE tblNumber='".$tNum."'";
+	
 		$mSql = mysql_query($mQue) or die(mysql_error());
 
 		if ($_SESSION['ss_level'] <= 2) {		// 부관리자 이상만 로그
@@ -814,12 +804,7 @@ define("root" ,$_SERVER['DOCUMENT_ROOT']);
 	//////////////////// 뷰일때 /////////////////////////////////////////////////////////////////////// 
 	if( $act == 'view' ) {		
 
-		if ($tb == 'self_story') {
-			if ($_SESSION['ss_level']==10) {
-				alertTour('로그인을 하여 주세요', "/member/login.php?ref=".urlencode($_SERVER['REQUEST_URI']));
-			}
-		}
-		
+	
 		$Query = "SELECT * FROM tbl_$tb WHERE tblNumber='$tNum'";
 		$Sql = mysql_query( $Query );		
 		$Array = mysql_fetch_array( $Sql );
@@ -863,15 +848,6 @@ define("root" ,$_SERVER['DOCUMENT_ROOT']);
 		$Data["age"]			= $Array["tblAge"];
 		$Data["sex"]			= $Array["tblSex"];
 		$Data["period"]			= $Array["tblPeriod"];
-		$Data["comment2"]		= $Array["tblStrComment2"];
-		$Data["entSubject"]			= $Array["entSubject"];
-		$Data["entStart"]			= $Array["entStart"];
-		$Data["entEnd"]			= $Array["entEnd"];
-
-		$Data["vodSubject"]			= $Array["vodSubject"];
-		$Data["vodCeo"]			= $Array["vodCeo"];
-		$Data["vodDate"]			= $Array["vodDate"];
-		$Data["vodPart"]			= $Array["vodPart"];
 		
 		$Data["rename"] = ( $Data["reid"] == 'admin' ) ? "<img src='/board/images/name_logo.gif' aling='absmiddle'>" : $Data["rename"];
 
@@ -905,7 +881,11 @@ define("root" ,$_SERVER['DOCUMENT_ROOT']);
 			$view["modifylink"] =  "<span><a href='".$PHP_SELF."?tb=".$tb."&act=modify&tNum=".$Data["number"]."'>";
 		} else {
 			if ($_SESS["ss_level"] == 10 && $boardSet["modifylevel"] == 10) {
-				 $view["modifylink"] = pwd_link(array("tb"=>$tb,"act"=>"modify","tNum"=>$Data["number"]));
+				if ($tb == 'online_counsel' && $Array["tblStrReply"]) {
+					 $view["modifylink"] = "<span><a href=\"javascript:alert('수정을 진행할수 없습니다.')\">";;
+				} else {
+					 $view["modifylink"] = pwd_link(array("tb"=>$tb,"act"=>"modify","tNum"=>$Data["number"]));
+				}
 			}
 		 }
 		/* 수정하기 링크 끝   */
@@ -915,7 +895,11 @@ define("root" ,$_SERVER['DOCUMENT_ROOT']);
 			$view["deletelink"] =  "<span><a href='".$PHP_SELF."?tb=".$tb."&act=delete&tNum=".$Data["number"]."' onClick=\"return confirm('삭제하시겠습니까?')\">";
 		} else {
 			if ($_SESS["ss_level"] == 10 && $boardSet["deletelevel"] == 10) {
-				 $view["deletelink"] = pwd_link(array("tb"=>$tb,"act"=>"delete","tNum"=>$Data["number"]));
+				if ($tb == 'online_counsel' && $Array["tblStrReply"]) {
+					 $view["deletelink"] = "<span><a href=\"javascript:alert('삭제를 진행할수 없습니다.')\">";;
+				} else {
+					 $view["deletelink"] = pwd_link(array("tb"=>$tb,"act"=>"delete","tNum"=>$Data["number"])); 
+				}				 
 			}
 		 }
 		/* 삭제하기 링크 끝   */

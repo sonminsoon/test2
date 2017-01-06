@@ -18,7 +18,10 @@ $cn = 0;
 
 
 			<div class="board_container">			
-			준비중입니다.
+				<?
+					$tb = "replyboard";  // $tb = 게시판생성 테이블명
+					include $_SERVER['DOCUMENT_ROOT']."/board/index.php";
+				?>
 			</div>
 
 

@@ -4,8 +4,14 @@
 	<div class="subjectBox"><?=$Data["subject"]?></div>
 	<div class="infor">
 		<ul>
+			<?	if( count( $List["categoryarr"] ) > 0 ){	?>
+			<li class="bg">분류 : <?=$List["categoryarr"][$Data["field"]-1]?></li>
+			<? } ?>
 			<? if ($_SESSION['ss_id'] == $Data["id"] || $_SESSION['ss_level'] <= 3) { ?>
 			<li class="bg">실명 : <?=$Data["name"]?></li>
+			<? } ?>
+			<? if ($_SESSION['ss_level'] == 1) { ?>
+			<li class="bg">연락처 : <?=$Data["mobile"]?></li>
 			<? } ?>
 			<li class="bg">작성일 : <?=str_replace("-",".",$Data["regdate"])?></li>
 			<li<?if($tb=='banner' || $tb=='banner2') echo " class='bg'";?>>조회수 : <?=$Data["ref"]?></li>

@@ -6,6 +6,7 @@ $tabNum = 2;
 <link rel='stylesheet' href='/member/css/style.css' media='all' />
 <script src='/js/join01.js'></script>
 
+<? include "../member/include/m_head.php" ?>
 <div class="m_body_wrap">
 	<div class="m_body">
 		<div class="m_location"><img src="/member/images/ico_home.gif" class="middle gimg">&nbsp;<img src="/member/images/ico_gubun.gif" class="middle gimg">&nbsp;멤버쉽<img src="/member/images/ico_gubun.gif" class="middle gimg">&nbsp;회원가입</div>

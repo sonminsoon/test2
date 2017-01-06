@@ -1,4 +1,4 @@
-<? include "../include/head.php" ?>
+<? include "../member/include/m_top.php" ?>
 <? if(!$_SESSION["ss_name"]){  //세션 유무에 따른 레이어 표출 ?>
 <? 
 $tabNum = 3;
@@ -7,8 +7,8 @@ $tabNum = 3;
 <link rel='stylesheet' href='/member/css/style.css' media='all' />
 <script src='/js/jquery-1.11.2.min.js'></script>
 <script src="/js/total.js"></script>
-<body>
-<? include "../member/include/m_top.php" ?>
+
+<? include "../member/include/m_head.php" ?>
 <div class="m_body_wrap">
 	<div class="m_body">
 		<div class="m_location"><img src="/member/images/ico_home.gif" class="middle gimg">&nbsp;<img src="/member/images/ico_gubun.gif" class="middle gimg">&nbsp;멤버쉽<img src="/member/images/ico_gubun.gif" class="middle gimg">&nbsp;아이디/비밀번호 찾기</div>

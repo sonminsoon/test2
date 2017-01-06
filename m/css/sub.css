@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 #sub_contents{min-height:500px;}
+.board_container{width:600px; margin:0 auto; padding:30px 0px 100px;}
 
 
 .cont_roll_type01{position:relative; width:640px; height:492px; margin:50px 0px;}
@@ -42,6 +43,8 @@
 #bottom_counsel .agree_text{height:120px; padding-top:60px; padding-left:5px; font-size:15px; color:#caaebc; line-height:15px;}
 #bottom_counsel .agree_link{display:block; padding-bottom:5px; font-size:15px; color:#caaebc; line-height:15px; line-height:1.4;}
 #bottom_counsel .agree_text label{font-size:15px; color:#ffffff;}
+
+.img_wrap01 .img{display:block;}
 
 .w01{width:276px;}
 .w02{width:90px;}

@@ -2,7 +2,7 @@
 include $_SERVER['DOCUMENT_ROOT']."/include/dbconfig.php";
 include $_SERVER['DOCUMENT_ROOT']."/include/function.php";
 
-$Que = "SELECT * FROM tbl_".$tb." WHERE tblNumber='".$tNum."' AND tblStrPass=password('".$strPass."')";
+$Que = "SELECT * FROM tbl_".$tb." WHERE tblNumber='".$tNum."' AND tblStrPass='".$strPass."'";
 $Sql = mysql_query($Que);
 $arr = mysql_fetch_array($Sql);
 	if( $arr["tblStrPass"] ) { 

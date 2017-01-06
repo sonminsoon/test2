@@ -1,11 +1,12 @@
-<? include "../include/head.php" ?>
+<? include "../member/include/m_top.php" ?>
 <? 
 $tabNum = 7;
 ?>
 <link rel='stylesheet' href='/css/style.css' media='all' />
 <link rel='stylesheet' href='/member/css/style.css' media='all' />
-<body>
-<? include "../member/include/m_top.php" ?>
+
+<? include "../member/include/m_head.php" ?>
+
 <div class="m_body_wrap">
 	<div class="m_body">
 		<div class="m_location"><img src="/member/images/ico_home.gif" class="middle gimg">&nbsp;<img src="/member/images/ico_gubun.gif" class="middle gimg">&nbsp;멤버쉽<img src="/member/images/ico_gubun.gif" class="middle gimg">&nbsp;개인정보처리(취급)방침</div>
@@ -13,7 +14,7 @@ $tabNum = 7;
 		<div class="m_contents"> 
 			<div class="m_box">
 				<div class="m_con">
-					<p><strong>쁨클리닉 </strong>(이하 ‘본원’이라 합니다)는 인터넷 상에서의 개인정보 보호를 매우 중요하게 생각하고 있으며, 이용자가 본원을 이용함에 있어서 본원에게 제공한 개인정보가 보호받을 수 있도록 최선을 다하고 있습니다.</p>
+					<p><strong>이젠의원 </strong>(이하 ‘본원’이라 합니다)는 인터넷 상에서의 개인정보 보호를 매우 중요하게 생각하고 있으며, 이용자가 본원을 이용함에 있어서 본원에게 제공한 개인정보가 보호받을 수 있도록 최선을 다하고 있습니다.</p>
 					<p>이에 따라, 본원은 통신비밀보호법, 전기통신사업법, 정보통신망이용촉진 등에 관한 법률 등 정보통신 서비스 제공자가 준수하여야 할 관련 법규를 바탕으로 개인정보 보호정책을 만들어 이를 준수해 나가고 있습니다.</p>
 					<p>본 개인정보처리방침은 정부의 법률 및 지침 변경이나 본원의 내부방침 변경 등으로 인하여 수시로 변경될 수 있으며, 본원은 변경사항이 있을 경우 즉시 관련 내용을 홈페이지 초기 화면에 게시된 개인정보처리방침에 반영하고 있습니다.</p>
 					<p>본 개인정보처리방침을 통하여 이용자는 수집된 개인정보가 어떠한 용도와 방식으로 이용되고 있으며 어떻게 안전하게 보호되고 있는지 이해하실 수 있을 것입니다.</p>
@@ -238,18 +239,18 @@ $tabNum = 7;
 						귀하의 개인정보를 보호하고 개인정보와 관련한 불만을 처리하기 위하여 본원은 아래와 같이 개인정보관리책임자를 두고 있습니다.</p>
 					<p>[개인정보 관리책임자]</p>
 						<p><h4>가. 개인정보관리책임자 </h4>
-						- 성명 : 김성환<br>
-						- 전화번호 : 02-539-3344 <br>
-						- 이메일 : ope1111@naver.com<br></p>
+						- 성명 : 성명 입력<br>
+						- 전화번호 : 전화번호 입력<br>
+						- 이메일 : 이메일 입력 <br></p>
 						<p><h4>나. 고객서비스담당 </h4>
-						- 부서 및 담당 : 고객 상담팀) 강지혜 <br>
-						- 전화번호 : 032)715-7991 <br>
-						- 이메일 : withme8275@naver.com</p>
+						- 부서 및 담당 : 고객 상담팀) 성명 입력 <br>
+						- 전화번호 : 전화번호 입력 <br>
+						- 이메일 : 이메일 입력</p>
 						<p><h4>다. 홈페이지서비스담당</h4>
 						-부서 : 기획•홍보실 <br>
-						-성명 : 박상민<br>
-						-연락처 : 070-4852-3844<br>
-						-이메일 : withme8275@naver.com</p>
+						-성명 : 성명 입력 <br>
+						-연락처 : 전화번호 입력<br>
+						-이메일 : 이메일 입력</p>
 						<p>귀하께서는 본원의 서비스를 이용하시며 발생하는 모든 개인정보보호 관련 민원을 개인정보관리책임자로 신고하실 수 있습니다.<br>
 						본원은 이용자들의 신고사항에 대해 신속하게 충분한 답변을 드릴 것입니다.<br>
 						기타 개인정보침해에 대한 신고나 상담이 필요하신 경우에는 아래 기관에 문의하시기 바랍니다.</p>

@@ -43,6 +43,40 @@
 .cont_roll_type01 .bx-pager .bx-pager-item .ico{display:inline-block; width:9px; height:10px; margin-left:13px; vertical-align:middle; background:url('../images/icon/ico_arrow01.png');}
 
 
+
+.tab_content{position:relative;}
+.tab_content .tab_menu{overflow:hidden; margin:20px 0px 50px; border:1px solid #b2b2b2;}
+.tab_content .tab_menu li{float:left; width:25%; height:58px; margin-top:-1px; border-left:1px solid #b2b2b2; border-top:1px solid #b2b2b2;}
+.tab_content .tab_menu.grid4 li{width:25%;}
+.tab_content .tab_menu.grid5 li{width:20%;}
+.tab_content .tab_menu li:first-child{border-left:0px;}
+.tab_content .tab_menu li a{display:block; font-size:17px; color:#4d4d4d; line-height:57px; text-align:center; text-decoration:none;}
+.tab_content .tab_menu li.active a{color:#ffffff; background:#161616;}
+.tab_content .cont{padding-left:50%; margin-left:-1010px;}
+.tab_content .cont > li{display:none;}
+.tab_content .cont > li:first-child{display:block;}
+
+.tab_content.type02 .tab_menu{margin-bottom:0px;}
+.tab_content.type02 .cont{padding:0px; margin-left:0px;}
+
+.tab_content .cont_t01{overflow:hidden; margin-top:-1px; border:1px solid #b2b2b2;}
+.tab_content .cont_t01 .img{float:left; width:513px;}
+.tab_content .cont_t01 > div{float:left; width:765px; padding:70px 100px 30px 100px; min-height:598px; background:#eeeeee;}
+.tab_content .cont_t01 h3{border-bottom:1px solid #000000; font-size:34px; color:#000000;}
+.tab_content .cont_t01 h3 span{display:inline-block; position:relative; line-height:50px;}
+.tab_content .cont_t01 h3 span:after{position:absolute; left:0px; right:0px; bottom:-3px; height:2px; background:#000000; content:'';}
+.tab_content .cont_t01 .t_text{padding-top:15px; font-size:16px; color:#4d4d4d; line-height:20px;}
+.tab_content .cont_t01 h4{margin:35px 0px 10px; padding-left:26px; font-size:20px; color:#42352a; background:url('../images/icon/ico_01.png') no-repeat 1px center;}
+
+.intro_tab{overflow:hidden; margin-top:100px; margin-bottom:30px;}
+.intro_tab li{float:left; margin-left:10px;}
+.intro_tab li:first-child{margin-left:0px;}
+
+.list01{}
+.list01 li{padding-left:26px; font-size:15px; color:#4d4d4d; line-height:22px; background:url('../images/icon/ico_02.png') no-repeat 15px 10px;}
+
+
+
 #sub_bottom_cont{position:relative; padding-left:50%; background:#f1f1f1;}
 #sub_bottom_cont > div{width:2020px; margin-left:-1010px;}
 #sub_bottom_cont > div > div{width:1280px; margin:0 auto;}
